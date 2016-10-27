@@ -1,3 +1,3 @@
-# Base Project Setup
+# Robert Helms Portfolio
 
-A general project skeleton including Grunt, Sass, Bourbon, Babel, Mocha, Chai, and probably other things, too.
+https://rdhelms.github.io/portfolio/
