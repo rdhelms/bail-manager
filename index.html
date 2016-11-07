@@ -4,21 +4,18 @@
 <head>
     <meta charset='UTF-8'>
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>Robby Helms Portfolio</title>
+    <title>Robert Helms Portfolio</title>
     <link rel="shortcut icon" href="images/bluecircle.png" type="image/x-icon">
     <link rel="icon" href="bluecircle.png" type="image/x-icon">
     <link rel="stylesheet" href="lib/styles/main.min.css">
 </head>
 
-<body>
-    <div class="background"></div>
+<body ng-app="portfolio">
+    <canvas id="backgroundCanvas"></canvas>
 
-    <section>
-      <div class="name"> Robert Helms </div>
-      <div class="title"> Web Developer </div>
-    </section>
+    <ui-view></ui-view>
 
-    <script src="lib/js/vendor.min.js"></script>
+    <script src="lib/js/vendor.js"></script>
     <script src="lib/js/app.js"></script>
 </body>
 

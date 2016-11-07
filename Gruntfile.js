@@ -30,8 +30,8 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'lib/js/app.js': ['src/js/*.js'],
-                    'lib/js/vendor.js': ['src/js/vendor/angular.min.js', 'src/js/vendor/angular-ui-router.js', 'src/js/vendor/*.js']
+                    'lib/js/app.js': ['src/js/app.js', 'src/js/services/projects.service.js', 'src/js/controllers/contact.controller.js', 'src/js/controllers/projects.controller.js'],
+                    'lib/js/vendor.js': ['src/js/vendor/angular.js', 'src/js/vendor/angular-ui-router.js', 'src/js/vendor/angular-local-storage.js', 'src/js/vendor/jquery.js']
                 }
             }
         },
