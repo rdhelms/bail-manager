@@ -19,4 +19,5 @@
             controller: 'contactCtrl as contact'
           });
         });
+
 })();

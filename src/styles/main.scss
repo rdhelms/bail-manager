@@ -8,12 +8,97 @@
 @import 'partials/setup/general';
 
 /***** Site Components ******/
+$headerHeight: 100px;
+
 #backgroundCanvas {
   z-index: 1;
   position: absolute;
-  background: rgb(0, 0, 100);
   width: 100vw;
   height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
+  position: fixed;
+  width: 100vw;
+  height: $headerHeight;
+  border: 2px solid white;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgb(0, 0, 100), rgb(100,100,150));
+  .headerTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    span {
+      margin: 10px;
+      text-align: center;
+    }
+  }
+  nav {
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    button.navLinks {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 60px;
+      width: 60px;
+      background: rgb(0, 0, 100);
+      color: white;
+      border-radius: 10px;
+      font-size: 15px;
+      outline-style: none;
+      &:hover {
+        background: white;
+        color: rgb(0, 0, 100);
+      }
+    }
+    .linkItems {
+      max-height: 0;
+      width: 200px;
+      position: fixed;
+      top: $headerHeight;
+      margin-right: 10px;
+      right: 0;
+      background: white;
+      border-radius: 0 0 10px 10px;
+      transition: .2s all ease .2s;
+      li {
+        z-index: 100;
+        padding: 10px;
+        font-size: 20px;
+        font-family: Arial, sans-serif;
+        text-decoration: none;
+        opacity: 0;
+        transition: .2s all ease;
+      }
+      &.active {
+        max-height: 200px;
+        transition: .5s all ease;
+        background: rgb(0, 0, 100);
+        border: 1px solid white;
+        li {
+          color: white;
+          opacity: 1;
+          transition: .2s opacity ease .2s;
+          &:hover {
+            background: white;
+            color: rgb(0, 0, 100);
+          }
+        }
+      }
+    }
+  }
 }
 
 .projectsSection, .contactSection {
@@ -21,44 +106,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  .name {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: rgb(0, 0, 100);
-    z-index: 100;
-    font-size: 20px;
-    font-family: Arial, sans-serif;
-    color: white;
-    padding: 10px;
-    margin: 10px;
-    border: 2px solid white;
-    border-radius: 10px;
-    span {
-      margin: 10px;
-    }
-  }
-  nav {
-    display: flex;
-    align-items: center;
-    z-index: 100;
-    margin: 10px;
-    // height: 100px;
-    a {
-      display: none;
-      background: rgb(0, 0, 100);
-      z-index: 100;
-      font-size: 20px;
-      font-family: Arial, sans-serif;
-      color: white;
-      padding: 10px;
-      margin: 10px;
-      border: 2px solid white;
-      border-radius: 10px;
-      text-decoration: none;
-    }
-  }
 }
 
 section {
