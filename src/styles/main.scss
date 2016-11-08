@@ -11,7 +11,7 @@
 $headerHeight: 100px;
 
 #backgroundCanvas {
-  z-index: 1;
+  z-index: -1;
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -19,6 +19,7 @@ $headerHeight: 100px;
 
 header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   z-index: 100;
   position: fixed;
@@ -27,6 +28,7 @@ header {
   border: 2px solid white;
   border-radius: 10px;
   background: linear-gradient(90deg, rgb(0, 0, 100), rgb(100,100,150));
+  box-shadow: 10px 10px 10px rgb(100,100,150);
   .headerTitle {
     display: flex;
     justify-content: center;
@@ -36,10 +38,10 @@ header {
     font-family: Arial, sans-serif;
     color: white;
     padding: 10px;
-    margin: 10px;
     span {
       margin: 10px;
       text-align: center;
+      text-transform: uppercase;
     }
   }
   nav {
@@ -52,7 +54,7 @@ header {
       align-items: center;
       justify-content: center;
       height: 60px;
-      width: 60px;
+      width: 150px;
       background: rgb(0, 0, 100);
       color: white;
       border-radius: 10px;
@@ -65,7 +67,7 @@ header {
     }
     .linkItems {
       max-height: 0;
-      width: 200px;
+      width: 150px;
       position: fixed;
       top: $headerHeight;
       margin-right: 10px;
@@ -81,6 +83,7 @@ header {
         text-decoration: none;
         opacity: 0;
         transition: .2s all ease;
+        cursor: pointer;
       }
       &.active {
         max-height: 200px;
@@ -101,14 +104,99 @@ header {
   }
 }
 
-.projectsSection, .contactSection {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-section {
+.projectsSection {
   height: 100vh;
   width: 100vw;
+  z-index: 100;
+  // display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .projectViewer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    top: $headerHeight / 2;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 75%;
+    width: 60%;
+    color: white;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    .viewerBtns {
+      position: absolute;
+      width: 120%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      font-size: 20px;
+      font-family: Arial, sans-serif;
+      .arrow-left {
+        width: 0;
+        height: 0;
+        border-top: 2vw solid transparent;
+        border-bottom: 2vw solid transparent;
+        border-right: 2vw solid rgba(255, 255, 255, 0.95);
+        cursor: pointer;
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+      .arrow-right {
+        width: 0;
+        height: 0;
+        border-top: 2vw solid transparent;
+        border-bottom: 2vw solid transparent;
+        border-left: 2vw solid rgba(255, 255, 255, 0.95);
+        cursor: pointer;
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+    h1 {
+      font-size: 35px;
+    }
+    a.projectImage {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+      box-shadow: 0 0 20px 10px rgb(100,100,150);
+      transition: all .3s ease;
+      &:hover {
+        transform: scale(1.4);
+        .description {
+          padding: 20px;
+          display: block;
+          position: absolute;
+          height: 50%;
+          width: 70%;
+          color: white;
+          background: rgba(0, 0, 0, 0.5);
+        }
+      }
+      img {
+        // width: 600px;
+        // height: 400px;
+        width: 42vw;
+        height: 29vw;
+      }
+      .description {
+        display: none;
+        font-size: 1.5vw;
+      }
+    }
+    p {
+      width: 45vw;
+      text-align: justify;
+    }
+  }
 }

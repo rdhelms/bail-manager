@@ -11,22 +11,12 @@
 </head>
 
 <body ng-app="portfolio">
-    <canvas id="backgroundCanvas" width="700" height="500"></canvas>
-    <header>
-      <div class="headerTitle"> <span>Robert Helms</span> <span>|</span> <span>Web Developer</span></div>
-      <nav>
-        <button class="navLinks"> <span>MENU</span> </button>
-        <ul class="linkItems">
-          <li ng-hover ui-sref="portfolio.projects">Projects</li>
-          <li ui-sref="portfolio.contact">Contact</li>
-        </ul>
-      </nav>
-    </header>
+  <canvas id="backgroundCanvas" width="700" height="500"></canvas>
+  
+  <ui-view></ui-view>
 
-    <ui-view></ui-view>
-
-    <script src="lib/js/vendor.js"></script>
-    <script src="lib/js/app.js"></script>
+  <script src="lib/js/vendor.js"></script>
+  <script src="lib/js/app.js"></script>
 </body>
 
 </html>

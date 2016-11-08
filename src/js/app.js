@@ -7,10 +7,10 @@
 
           $stateProvider.state('portfolio', {
             url: '/',
-            abstract: true,
-            template: '<ui-view></ui-view>'
+            templateUrl: 'src/views/main.html',
+            controller: 'mainCtrl as main'
           }).state('portfolio.projects', {
-            url: '',
+            url: 'projects',
             templateUrl: 'src/views/projects.html',
             controller: 'projectsCtrl as projects'
           }).state('portfolio.contact', {
