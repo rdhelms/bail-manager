@@ -28,7 +28,7 @@ header {
   border: 2px solid white;
   border-radius: 10px;
   background: linear-gradient(90deg, rgb(0, 0, 100), rgb(100,100,150));
-  box-shadow: 10px 10px 10px rgb(100,100,150);
+  // box-shadow: 10px 10px 10px rgb(100,100,150);
   .headerTitle {
     display: flex;
     justify-content: center;
@@ -105,98 +105,106 @@ header {
 }
 
 .projectsSection {
+  position: relative;
   height: 100vh;
   width: 100vw;
-  z-index: 100;
-  // display: none;
+  z-index: 50;
   display: flex;
   justify-content: center;
   align-items: center;
-  .projectViewer {
+  .viewerBtns {
+    position: absolute;
+    width: 70%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    color: white;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    .arrow-left {
+      position: relative;
+      top: $headerHeight / 2;
+      width: 0;
+      height: 0;
+      border-top: 2vw solid transparent;
+      border-bottom: 2vw solid transparent;
+      border-right: 2vw solid rgba(255, 255, 255, 0.95);
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+    .arrow-right {
+      position: relative;
+      top: $headerHeight / 2;
+      width: 0;
+      height: 0;
+      border-top: 2vw solid transparent;
+      border-bottom: 2vw solid transparent;
+      border-left: 2vw solid rgba(255, 255, 255, 0.95);
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+  .projectViewer {
+    overflow: hidden;
     position: relative;
     top: $headerHeight / 2;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.9);
     border: 2px solid black;
     border-radius: 10px;
     height: 75%;
     width: 60%;
-    color: white;
+    color: black;
     font-size: 20px;
     font-family: Arial, sans-serif;
-    .viewerBtns {
-      position: absolute;
-      width: 120%;
+    .currentProject {
       height: 100%;
+      width: 100%;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      color: white;
-      font-size: 20px;
-      font-family: Arial, sans-serif;
-      .arrow-left {
-        width: 0;
-        height: 0;
-        border-top: 2vw solid transparent;
-        border-bottom: 2vw solid transparent;
-        border-right: 2vw solid rgba(255, 255, 255, 0.95);
-        cursor: pointer;
+      justify-content: space-around;
+      h1 {
+        font-size: 35px;
+      }
+      a.projectImage {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid black;
+        border-radius: 5px;
+        // box-shadow: 0 0 20px 10px rgb(100,100,150);
+        transition: all .3s ease;
         &:hover {
           transform: scale(1.2);
+          .description {
+            padding: 20px;
+            display: block;
+            position: absolute;
+            height: 50%;
+            width: 70%;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+          }
         }
-      }
-      .arrow-right {
-        width: 0;
-        height: 0;
-        border-top: 2vw solid transparent;
-        border-bottom: 2vw solid transparent;
-        border-left: 2vw solid rgba(255, 255, 255, 0.95);
-        cursor: pointer;
-        &:hover {
-          transform: scale(1.2);
+        img {
+          width: 42vw;
+          height: 29vw;
         }
-      }
-    }
-    h1 {
-      font-size: 35px;
-    }
-    a.projectImage {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 5px;
-      box-shadow: 0 0 20px 10px rgb(100,100,150);
-      transition: all .3s ease;
-      &:hover {
-        transform: scale(1.4);
         .description {
-          padding: 20px;
-          display: block;
-          position: absolute;
-          height: 50%;
-          width: 70%;
-          color: white;
-          background: rgba(0, 0, 0, 0.5);
+          display: none;
+          font-size: 1.5vw;
         }
       }
-      img {
-        // width: 600px;
-        // height: 400px;
-        width: 42vw;
-        height: 29vw;
+      p {
+        max-width: 45vw;
+        text-align: justify;
       }
-      .description {
-        display: none;
-        font-size: 1.5vw;
-      }
-    }
-    p {
-      width: 45vw;
-      text-align: justify;
     }
   }
 }
