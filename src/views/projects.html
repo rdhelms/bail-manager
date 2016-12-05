@@ -8,9 +8,13 @@
       <h1>{{projects.projectsList[projects.currentProject].name}}</h1>
       <a class="projectImage" href="{{projects.projectsList[projects.currentProject].pageLink}}" target="_blank">
         <img src="{{projects.projectsList[projects.currentProject].thumbnail}}">
-        <p class="description">{{projects.projectsList[projects.currentProject].descrLong}}</p>
+        <ul class="techstack">
+          <span class="listTitle">Tech Stack</span>
+          <li ng-repeat="techstackItem in projects.projectsList[projects.currentProject].techstack">{{techstackItem}}</li>
+        </ul>
       </a>
       <p>{{projects.projectsList[projects.currentProject].descrShort}}</p>
+      <a href="{{projects.projectsList[projects.currentProject].repoLink}}" target="_blank">View on GitHub</a>
     </div>
   </div>
 </section>
