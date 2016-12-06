@@ -44,11 +44,11 @@ angular.module('portfolio').controller('mainCtrl', function(Projects, $state) {
     $('.linkItems').toggleClass('active');
   });
 
-  // $('body').on('mousemove', function(event) {
-  //   mouseMoveEvent = event;
-  //   if (mouseMoveEvent.clientX < (window.innerWidth - 200) || mouseMoveEvent.clientY > (400)) { // Hiding nav links
-  //     $('.linkItems').removeClass('active');
-  //   }
-  //   mouseMove = true;
-  // });
+  $('body').on('mousemove', function(event) {
+    mouseMoveEvent = event;
+    // if (mouseMoveEvent.clientX < (window.innerWidth - 200) || mouseMoveEvent.clientY > (400)) { // Hiding nav links
+    //   $('.linkItems').removeClass('active');
+    // }
+    mouseMove = true;
+  });
 });
