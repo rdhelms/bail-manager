@@ -209,6 +209,8 @@ header {
         text-align: justify;
       }
       .detailBtns a {
+        position: relative;
+        bottom: 5px;
         cursor: pointer;
         padding: 10px;
         text-align: center;
@@ -416,21 +418,21 @@ header {
           max-width: 90%;
           text-align: justify;
         }
-        .detailBtns a {
-          cursor: pointer;
-          padding: 10px;
-          text-align: center;
-          text-decoration: none;
-          height: 60px;
-          width: 150px;
-          background: rgb(0, 0, 100);
-          color: white;
-          border-radius: 10px;
-          font-size: 15px;
-          outline-style: none;
-          &:hover {
-            background: white;
-            color: rgb(0, 0, 100);
+        .detailBtns {
+          a {
+            cursor: pointer;
+            padding: 5px;
+            text-align: center;
+            text-decoration: none;
+            background: rgb(0, 0, 100);
+            color: white;
+            border-radius: 10px;
+            font-size: 12px;
+            outline-style: none;
+            &:hover {
+              background: white;
+              color: rgb(0, 0, 100);
+            }
           }
         }
       }
