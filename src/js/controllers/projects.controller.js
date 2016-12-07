@@ -1,5 +1,6 @@
 angular.module('portfolio').controller('projectsCtrl', function(Projects, $state, $scope) {
   var self = this;
+  this.showingTechStack = false;
 
   this.projectsList = [
     {

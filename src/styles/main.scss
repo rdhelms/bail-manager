@@ -16,9 +16,9 @@ $headerHeight: 100px;
   width: 100vw;
   height: 100vh;
 }
-
 header {
   display: flex;
+  display: -webkit-flex;
   flex-wrap: wrap;
   justify-content: space-between;
   z-index: 100;
@@ -28,9 +28,9 @@ header {
   border: 2px solid white;
   border-radius: 10px;
   background: linear-gradient(90deg, rgb(0, 0, 100), rgb(100,100,150));
-  // box-shadow: 10px 10px 10px rgb(100,100,150);
   .headerTitle {
     display: flex;
+    display: -webkit-flex;
     justify-content: center;
     align-items: center;
     z-index: 100;
@@ -47,12 +47,11 @@ header {
   nav {
     z-index: 100;
     display: flex;
+    display: -webkit-flex;
     align-items: center;
     padding: 10px;
     button.navLinks {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      text-align: center;
       height: 60px;
       width: 150px;
       background: rgb(0, 0, 100);
@@ -112,21 +111,22 @@ header {
   width: 100vw;
   z-index: 50;
   display: flex;
+  display: -webkit-flex;
   justify-content: center;
   align-items: center;
   .viewerBtns {
     position: absolute;
-    width: 70%;
+    top: 50%;
+    left: 0;
+    right: 0;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     color: white;
     font-size: 20px;
     font-family: Arial, sans-serif;
     .arrow-left {
-      position: relative;
+      position: absolute;
       top: $headerHeight / 2;
+      left: 10%;
       width: 0;
       height: 0;
       border-top: 2vw solid transparent;
@@ -138,8 +138,9 @@ header {
       }
     }
     .arrow-right {
-      position: relative;
+      position: absolute;
       top: $headerHeight / 2;
+      right: 10%;
       width: 0;
       height: 0;
       border-top: 2vw solid transparent;
@@ -167,6 +168,7 @@ header {
       height: 100%;
       width: 100%;
       display: flex;
+      display: -webkit-flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-around;
@@ -175,35 +177,27 @@ header {
       }
       a.projectImage {
         position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         border: 2px solid black;
         border-radius: 5px;
-        // box-shadow: 0 0 20px 10px rgb(100,100,150);
         transition: all .3s ease;
-        &:hover {
-          // transform: scale(1.2);
-          .techstack {
-            padding: 20px;
-            display: block;
-            position: absolute;
-            height: 50%;
-            width: 70%;
-            color: white;
-            background: rgba(0, 0, 0, 0.9);
-          }
-        }
         img {
           width: 42vw;
           height: 29vw;
         }
         .techstack {
+          top: 50%;
+          left: 50%;
+          position: absolute;
+          padding: 20px;
+          height: 50%;
+          width: 70%;
+          color: white;
+          background: rgba(0, 0, 0, 0.9);
+          font-size: 1.5vw;
+          transform: translate(-50%, -50%);
           .listTitle {
             text-decoration: underline;
           }
-          display: none;
-          font-size: 1.5vw;
           li {
             margin: 10px 0;
             text-decoration: none;
@@ -214,6 +208,23 @@ header {
         max-width: 45vw;
         text-align: justify;
       }
+      .detailBtns a {
+        cursor: pointer;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        height: 60px;
+        width: 150px;
+        background: rgb(0, 0, 100);
+        color: white;
+        border-radius: 10px;
+        font-size: 15px;
+        outline-style: none;
+        &:hover {
+          background: white;
+          color: rgb(0, 0, 100);
+        }
+      }
     }
   }
 }
@@ -223,6 +234,7 @@ header {
   width: 100vw;
   z-index: 50;
   display: flex;
+  display: -webkit-flex;
   align-items: center;
   justify-content: center;
   a {
@@ -242,15 +254,15 @@ header {
     position: fixed;
     top: $headerHeight;
     left: 0;
-    display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     height: 60px;
     width: 100vw;
     background: rgb(0, 0, 100);
     color: white;
     border-radius: 10px;
-    font-size: 15px;
+    font-size: 25px;
     outline-style: none;
     &:hover {
       background: white;
@@ -301,20 +313,19 @@ header {
     width: 100vw;
     z-index: 50;
     display: flex;
+    display: -webkit-flex;
     justify-content: center;
     align-items: center;
     .viewerBtns {
       position: absolute;
-      width: 100%;
+      left: 0;
+      right: 0;
       height: 100%;
-      // display: flex;
-      // align-items: center;
-      // justify-content: space-between;
       color: white;
       font-size: 20px;
       font-family: Arial, sans-serif;
       .arrow-left {
-        position: relative;
+        position: absolute;
         top: $headerHeight / 2 + 20px;
         left: 0;
         width: 0;
@@ -328,7 +339,7 @@ header {
         }
       }
       .arrow-right {
-        position: relative;
+        position: absolute;
         top: $headerHeight / 2 + 20px;
         right: 0;
         width: 0;
@@ -358,6 +369,7 @@ header {
         height: 100%;
         width: 100%;
         display: flex;
+        display: -webkit-flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
@@ -365,36 +377,35 @@ header {
           font-size: 35px;
         }
         a.projectImage {
+          width: 95%;
           position: relative;
           display: flex;
+          display: -webkit-flex;
           justify-content: center;
           align-items: center;
           border: 2px solid black;
           border-radius: 5px;
           // box-shadow: 0 0 20px 10px rgb(100,100,150);
           transition: all .3s ease;
-          &:hover {
-            // transform: scale(1.2);
-            .techstack {
-              padding: 20px;
-              display: block;
-              position: absolute;
-              height: 50%;
-              width: 70%;
-              color: white;
-              background: rgba(0, 0, 0, 0.9);
-            }
-          }
           img {
-            width: 42vw;
-            height: 29vw;
+            width: 100%;
+            height: 120%;
           }
           .techstack {
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            padding: 10px;
+            height: 90%;
+            width: 70%;
+            overflow: scroll;
+            color: white;
+            background: rgba(0, 0, 0, 0.9);
+            font-size: 3.5vw;
+            transform: translate(-50%, -50%);
             .listTitle {
               text-decoration: underline;
             }
-            display: none;
-            font-size: 1.5vw;
             li {
               margin: 10px 0;
               text-decoration: none;
@@ -404,6 +415,23 @@ header {
         p {
           max-width: 90%;
           text-align: justify;
+        }
+        .detailBtns a {
+          cursor: pointer;
+          padding: 10px;
+          text-align: center;
+          text-decoration: none;
+          height: 60px;
+          width: 150px;
+          background: rgb(0, 0, 100);
+          color: white;
+          border-radius: 10px;
+          font-size: 15px;
+          outline-style: none;
+          &:hover {
+            background: white;
+            color: rgb(0, 0, 100);
+          }
         }
       }
     }

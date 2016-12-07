@@ -40,6 +40,10 @@ angular.module('portfolio').controller('mainCtrl', function(Projects, $state) {
     }
   }
 
+  this.hideNav = function() {
+    $('.linkItems').removeClass('active');
+  }
+
   $('button.navLinks').on('click', function(){
     $('.linkItems').toggleClass('active');
   });

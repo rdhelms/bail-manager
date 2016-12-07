@@ -6,15 +6,19 @@
   <div class="projectViewer">
     <div class="currentProject">
       <h1>{{projects.projectsList[projects.currentProject].name}}</h1>
-      <a class="projectImage" href="{{projects.projectsList[projects.currentProject].pageLink}}" target="_blank">
+      <a ng-mouseenter="projects.showingTechStack = true" ng-mouseleave="projects.showingTechStack = false" class="projectImage" href="{{projects.projectsList[projects.currentProject].pageLink}}" target="_blank">
         <img src="{{projects.projectsList[projects.currentProject].thumbnail}}">
-        <ul class="techstack">
+        <ul ng-show="projects.showingTechStack" class="techstack">
           <span class="listTitle">Tech Stack</span>
           <li ng-repeat="techstackItem in projects.projectsList[projects.currentProject].techstack">{{techstackItem}}</li>
         </ul>
       </a>
       <p>{{projects.projectsList[projects.currentProject].descrShort}}</p>
-      <a href="{{projects.projectsList[projects.currentProject].repoLink}}" target="_blank">View on GitHub</a>
+      <div class="detailBtns">
+        <a ng-click="projects.showingTechStack = !projects.showingTechStack">Tech Stack</a>
+        <a href="{{projects.projectsList[projects.currentProject].repoLink}}" target="_blank">View on GitHub</a>
+        <a href="{{projects.projectsList[projects.currentProject].pageLink}}" target="_blank">Visit Site</a>
+      </div>
     </div>
   </div>
 </section>
