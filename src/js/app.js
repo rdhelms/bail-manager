@@ -1,22 +1,22 @@
 (function() {
   "use strict";
 
-  angular.module('portfolio', ['ui.router', 'LocalStorageModule'])
+  angular.module('baseAngular', ['ui.router', 'LocalStorageModule'])
         .config(function($stateProvider, $urlRouterProvider) {
           $urlRouterProvider.otherwise('/');
 
-          $stateProvider.state('portfolio', {
+          $stateProvider.state('main', {
             url: '/',
             templateUrl: 'src/views/main.html',
             controller: 'mainCtrl as main'
-          }).state('portfolio.projects', {
-            url: 'projects',
-            templateUrl: 'src/views/projects.html',
-            controller: 'projectsCtrl as projects'
-          }).state('portfolio.contact', {
-            url: 'contact',
-            templateUrl: 'src/views/contact.html',
-            controller: 'contactCtrl as contact'
+          }).state('main.first', {
+            url: 'first',
+            templateUrl: 'src/views/first.html',
+            controller: 'firstCtrl as first'
+          }).state('main.second', {
+            url: 'second',
+            templateUrl: 'src/views/second.html',
+            controller: 'secondCtrl as second'
           });
         });
 })();

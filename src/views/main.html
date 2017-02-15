@@ -1,13 +1,12 @@
 <header>
-  <div class="headerTitle"> <span>Robert Helms</span> <span>|</span> <span>Web Developer</span></div>
   <nav>
-    <button class="navLinks"> <span>MENU</span> </button>
-    <ul class="linkItems">
-      <li ng-click="main.hideNav()" ui-sref="portfolio">Home</li>
-      <li ng-click="main.hideNav()" ui-sref="portfolio.projects">Projects</li>
-      <li ng-click="main.hideNav()" ui-sref="portfolio.contact">Contact</li>
+    <ul>
+      <li ui-sref="main"><button>Main</button></li>
+      <li ui-sref="main.first"><button>First</button></li>
+      <li ui-sref="main.second"><button>Second</button></li>
     </ul>
   </nav>
 </header>
 
+<h1>{{main.testingVariable}}</h1>
 <ui-view></ui-view>
