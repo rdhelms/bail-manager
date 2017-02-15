@@ -1,3 +1,1 @@
-# Robert Helms Portfolio
-
-https://rdhelms.github.io/
+# Angular Base Project
