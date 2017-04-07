@@ -1,5 +1,3 @@
-angular.module('baseAngular').controller('secondCtrl', function(MainService, $state, $scope) {
+angular.module('baseAngular').controller('secondCtrl', function(InmateService, $state, $scope) {
   var self = this;
-
-  self.testingVariable = "Second View";
 });

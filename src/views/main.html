@@ -1,12 +1,56 @@
 <header>
   <nav>
-    <ul>
-      <li ui-sref="main"><button>Main</button></li>
-      <li ui-sref="main.first"><button>First</button></li>
-      <li ui-sref="main.second"><button>Second</button></li>
+    <ul class="navBtns">
+      <li ui-sref="main">Home</li>
+      <!-- <li ui-sref="main.first">Page 1</li> -->
+      <!-- <li ui-sref="main.second">Page 2</li> -->
     </ul>
   </nav>
 </header>
 
-<h1>{{main.testingVariable}}</h1>
 <ui-view></ui-view>
+
+<section>
+  <button class="getInmatesBtn" ng-click="main.getInmates(); main.loading = true">Get Inmates</button>
+</section>
+<p class="loading" ng-if="main.loading">LOADING...</p>
+<section class="inmateList">
+  <ul>
+    <li class="inmateContainer" ng-repeat="inmate in main.inmateList">
+      <ul class="inmateInfo title" ng-click="inmate.active = !inmate.active">
+        <li>Name</li>
+        <li>Charges</li>
+        <li>Total Bail Amount</li>
+        <li>Date Released</li>
+        <li>Bailable</li>
+      </ul>
+      <ul class="inmateInfo" ng-click="inmate.active = !inmate.active">
+        <li>{{inmate.name}}</li>
+        <li>{{inmate.charges.length}}</li>
+        <li>{{inmate.totalBailAmount}}</li>
+        <li>{{inmate.dateReleased}}</li>
+        <li> ? </li>
+      </ul>
+      <ul class="inmateCharges title" ng-if="inmate.active">
+        <li>Description</li>
+        <li>Bail</li>
+        <li>Bond Type</li>
+        <li>CourtDocket</li>
+        <li>Date Charged</li>
+        <li>Date Confined</li>
+        <li>Date Released</li>
+        <li>Days in Jail</li>
+      </ul>
+      <ul class="inmateCharges" ng-repeat="charge in inmate.charges" ng-if="inmate.active">
+        <li>{{charge.description}}</li>
+        <li>{{charge.bailAmountString}}</li>
+        <li>{{charge.bondType}}</li>
+        <li>{{charge.courtDocket}}</li>
+        <li>{{charge.dateCharged}}</li>
+        <li>{{charge.dateConfined}}</li>
+        <li>{{charge.dateReleased}}</li>
+        <li>{{charge.daysInJail}}</li>
+      </ul>
+    </li>
+  </ul>
+</section>

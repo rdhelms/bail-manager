@@ -8,3 +8,78 @@
 @import 'partials/setup/general';
 
 /***** Site Components ******/
+
+* {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+}
+
+button {
+  outline-style: none;
+}
+
+header {
+  width: 100%;
+  background: navy;
+  height: 50px;
+  nav, .navBtns, li {
+    height: 100%;
+  }
+}
+
+.navBtns {
+  display: flex;
+  li {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    color: white;
+    font-size: 20px;
+  }
+}
+
+.getInmatesBtn {
+  width: 100%;
+  height: 50px;
+  background: #333;
+  color: white;
+  border-radius: 10px;
+}
+
+.loading {
+  margin: 10px;
+}
+
+.inmateContainer {
+  margin: 5px;
+  border: 2px solid black;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.inmateInfo {
+  display: flex;
+  background: navy;
+  color: white;
+  li {
+    width: 20%;
+    padding: 5px;
+  }
+  &.title {
+    background: #005;
+  }
+}
+
+.inmateCharges {
+  display: flex;
+  background: #333;
+  color: white;
+  border: 1px solid #555;
+  li {
+    width: 12.5%;
+    padding: 5px;
+  }
+  &.title {
+    background: #333;
+  }
+}
