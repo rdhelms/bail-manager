@@ -1,0 +1,77 @@
+<section class="search">
+  <h1>Search Inmates</h1>
+  <div class="searchField">
+    <label for="searchAll">Search All Fields: </label>
+    <input id="searchAll" type="text" ng-model="inmates.searchAll">
+  </div>
+  <div class="searchField">
+    <label for="searchName">Names: </label>
+    <input id="searchName" type="text" ng-model="inmates.search.name">
+  </div>
+  <div class="searchField">
+    <label for="searchNumCharges">Number of Charges: </label>
+    <input id="searchNumCharges" type="text" ng-model="inmates.searchNumCharges">
+    <input type="radio" name="searchChargesType" value="exact" ng-model="inmates.searchChargesType">
+    <span>Exact</span>
+    <input type="radio" name="searchChargesType" value="lessThan" ng-model="inmates.searchChargesType">
+    <span>Less than</span>
+    <input type="radio" name="searchChargesType" value="greaterThan" ng-model="inmates.searchChargesType">
+    <span>Greater than</span>
+  </div>
+  <div class="searchField">
+    <label for="searchBailAmount">Bail Amount: </label>
+    <input id="searchBailAmount" type="text" ng-model="inmates.searchBailAmount">
+    <input type="radio" name="searchBailType" value="exact" ng-model="inmates.searchBailType">
+    <span>Exact</span>
+    <input type="radio" name="searchBailType" value="lessThan" ng-model="inmates.searchBailType">
+    <span>Less than</span>
+    <input type="radio" name="searchBailType" value="greaterThan" ng-model="inmates.searchBailType">
+    <span>Greater than</span>
+  </div>
+  <div class="searchField">
+    <label for="searchDateReleased">Date Released: </label>
+    <input id="searchDateReleased" type="text" ng-model="inmates.search.dateReleased">
+  </div>
+</section>
+<p class="loading" ng-if="inmates.loading">LOADING...</p>
+<p ng-cloak class="resultNum">Results Found: {{inmates.filterResults.length}} </p>
+<section class="inmateList">
+  <ul class="inmateInfo title">
+    <li>Name</li>
+    <li>Charges</li>
+    <li>Total Bail Amount</li>
+    <li>Date Released</li>
+    <li>Bailable</li>
+  </ul>
+  <ul class="allInmates">
+    <li class="inmateContainer" ng-repeat="inmate in inmates.filterResults = (inmates.inmateList | filter : inmates.searchAll | filter : inmates.search | filter : inmates.searchCharges | filter : inmates.searchTotalBail)">
+      <ul class="inmateInfo" ng-click="inmate.active = !inmate.active">
+        <li>{{inmate.name}}</li>
+        <li>{{inmate.charges.length}}</li>
+        <li>{{inmate.totalBailAmount}}</li>
+        <li>{{inmate.dateReleased}}</li>
+        <li> ? </li>
+      </ul>
+      <ul class="inmateCharges title" ng-if="inmate.active">
+        <li>Description</li>
+        <li>Bail</li>
+        <li>Bond Type</li>
+        <li>CourtDocket</li>
+        <li>Date Charged</li>
+        <li>Date Confined</li>
+        <li>Date Released</li>
+        <li>Days in Jail</li>
+      </ul>
+      <ul class="inmateCharges" ng-repeat="charge in inmate.charges" ng-if="inmate.active">
+        <li>{{charge.description}}</li>
+        <li>{{charge.bailAmountString}}</li>
+        <li>{{charge.bondType}}</li>
+        <li>{{charge.courtDocket}}</li>
+        <li>{{charge.dateCharged}}</li>
+        <li>{{charge.dateConfined}}</li>
+        <li>{{charge.dateReleased}}</li>
+        <li>{{charge.daysInJail}}</li>
+      </ul>
+    </li>
+  </ul>
+</section>

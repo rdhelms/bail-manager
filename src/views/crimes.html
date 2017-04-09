@@ -1,0 +1,41 @@
+<section class="search">
+  <h1>Search Crimes</h1>
+  <div class="searchField">
+    <label for="searchAll">Search All Fields: </label>
+    <input id="searchAll" type="text" ng-model="crimes.searchAll">
+  </div>
+  <div class="searchField">
+    <label for="searchName">Names: </label>
+    <input id="searchName" type="text" ng-model="crimes.search.name">
+  </div>
+  <div class="searchField">
+    <label for="searchBailable">Bailable: </label>
+    <input name="searchBailable" type="radio" value="No" ng-model="crimes.search.bailable">
+    <span>No</span>
+    <input name="searchBailable" type="radio" value="Yes" ng-model="crimes.search.bailable">
+    <span>Yes</span>
+    <input name="searchBailable" type="radio" value="Maybe" ng-model="crimes.search.bailable">
+    <span>Maybe</span>
+    <input name="searchBailable" type="radio" value="" ng-model="crimes.search.bailable">
+    <span>All</span>
+  </div>
+</section>
+<p ng-cloak class="resultNum">Results Found: {{crimes.filterResults.length}} </p>
+<p class="loading" ng-if="crimes.loading">LOADING...</p>
+<section class="crimesList">
+  <ul class="crimeInfo title">
+    <li>Name</li>
+    <li>Bailable</li>
+  </ul>
+  <ul class="allCrimes">
+    <li class="crimeContainer" ng-repeat="crime in crimes.filterResults = (crimes.crimeList | filter : crimes.searchAll | filter : crimes.search)">
+      <ul class="crimeInfo">
+        <li>{{crime.name}}</li>
+        <li>
+          <button ng-class="crime.bailable == 'No' ? 'notBailable active' : ''" ng-click="crime.bailable='No'; crimes.updateCrime(crime)">No</button>
+          <button ng-class="crime.bailable == 'Yes' ? 'bailable active' : ''" ng-click="crime.bailable='Yes'; crimes.updateCrime(crime)">Yes</button>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>

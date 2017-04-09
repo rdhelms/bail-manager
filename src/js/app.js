@@ -9,14 +9,18 @@
             url: '/',
             templateUrl: 'src/views/main.html',
             controller: 'mainCtrl as main'
-          }).state('main.first', {
-            url: 'first',
-            templateUrl: 'src/views/first.html',
-            controller: 'firstCtrl as first'
-          }).state('main.second', {
-            url: 'second',
-            templateUrl: 'src/views/second.html',
-            controller: 'secondCtrl as second'
+          }).state('main.inmates', {
+            url: 'inmates',
+            templateUrl: 'src/views/inmates.html',
+            controller: 'inmatesCtrl as inmates'
+          }).state('main.crimes', {
+            url: 'crimes',
+            templateUrl: 'src/views/crimes.html',
+            controller: 'crimesCtrl as crimes'
+          }).state('main.manager', {
+            url: 'manager',
+            templateUrl: 'src/views/manager.html',
+            controller: 'managerCtrl as manager'
           });
         });
 })();

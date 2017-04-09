@@ -33,8 +33,11 @@ header {
     display: flex;
     align-items: center;
     margin-left: 10px;
+    padding: 5px;
     color: white;
     font-size: 20px;
+    border: 1px solid white;
+    cursor: pointer;
   }
 }
 
@@ -53,11 +56,11 @@ header {
   margin: 10px;
 }
 
-.allInmates {
+.allInmates, .allCrimes {
   border: 2px solid black;
 }
 
-.inmateContainer {
+.inmateContainer, .crimeContainer {
   border-bottom: 2px solid black;
 }
 
@@ -73,6 +76,28 @@ header {
     width: 20%;
     padding: 5px;
   }
+}
+
+.crimeInfo {
+  display: flex;
+  background: #059;
+  color: white;
+  padding: 5px;
+  &.title {
+    background: #005;
+  }
+  li {
+    width: 50%;
+    padding: 5px;
+  }
+}
+
+button.bailable.active {
+  background: green;
+}
+
+button.notBailable.active {
+  background: red;
 }
 
 .inmateCharges {
