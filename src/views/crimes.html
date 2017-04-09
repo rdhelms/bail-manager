@@ -14,8 +14,10 @@
     <span>No</span>
     <input name="searchBailable" type="radio" value="Yes" ng-model="crimes.search.bailable">
     <span>Yes</span>
-    <input name="searchBailable" type="radio" value="Maybe" ng-model="crimes.search.bailable">
-    <span>Maybe</span>
+    <input name="searchBailable" type="radio" value="Hold" ng-model="crimes.search.bailable">
+    <span>Hold</span>
+    <input name="searchBailable" type="radio" value="Null" ng-model="crimes.search.bailable">
+    <span>Null</span>
     <input name="searchBailable" type="radio" value="" ng-model="crimes.search.bailable">
     <span>All</span>
   </div>
@@ -28,12 +30,14 @@
     <li>Bailable</li>
   </ul>
   <ul class="allCrimes">
-    <li class="crimeContainer" ng-repeat="crime in crimes.filterResults = (crimes.crimeList | filter : crimes.searchAll | filter : crimes.search)">
+    <li class="crimeContainer" ng-repeat="crime in crimes.filterResults = (main.crimeList | filter : crimes.searchAll | filter : crimes.search)">
       <ul class="crimeInfo">
         <li>{{crime.name}}</li>
         <li>
           <button ng-class="crime.bailable == 'No' ? 'notBailable active' : ''" ng-click="crime.bailable='No'; crimes.updateCrime(crime)">No</button>
           <button ng-class="crime.bailable == 'Yes' ? 'bailable active' : ''" ng-click="crime.bailable='Yes'; crimes.updateCrime(crime)">Yes</button>
+          <button ng-class="crime.bailable == 'Hold' ? 'holdBailable active' : ''" ng-click="crime.bailable='Hold'; crimes.updateCrime(crime)">Hold</button>
+          <button ng-class="crime.bailable == 'Null' ? 'nullBailable active' : ''" ng-click="crime.bailable='Null'; crimes.updateCrime(crime)">Null</button>
         </li>
       </ul>
     </li>

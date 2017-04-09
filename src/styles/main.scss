@@ -100,6 +100,14 @@ button.notBailable.active {
   background: red;
 }
 
+button.holdBailable.active {
+  background: yellow;
+}
+
+button.nullBailable.active {
+  background: white;
+}
+
 .inmateCharges {
   display: flex;
   background: #333;

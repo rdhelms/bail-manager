@@ -32,8 +32,17 @@
     <label for="searchDateReleased">Date Released: </label>
     <input id="searchDateReleased" type="text" ng-model="inmates.search.dateReleased">
   </div>
+  <div class="searchField">
+    <label for="searchBailability">Bailability: </label>
+    <input name="searchBailability" type="radio" value="No" ng-model="inmates.search.bailability">
+    <span>No</span>
+    <input name="searchBailability" type="radio" value="Yes" ng-model="inmates.search.bailability">
+    <span>Yes</span>
+    <input name="searchBailability" type="radio" value="" ng-model="inmates.search.bailability">
+    <span>All</span>
+  </div>
 </section>
-<p class="loading" ng-if="inmates.loading">LOADING...</p>
+<p class="loading" ng-if="main.loading">LOADING...</p>
 <p ng-cloak class="resultNum">Results Found: {{inmates.filterResults.length}} </p>
 <section class="inmateList">
   <ul class="inmateInfo title">
@@ -44,13 +53,13 @@
     <li>Bailable</li>
   </ul>
   <ul class="allInmates">
-    <li class="inmateContainer" ng-repeat="inmate in inmates.filterResults = (inmates.inmateList | filter : inmates.searchAll | filter : inmates.search | filter : inmates.searchCharges | filter : inmates.searchTotalBail)">
+    <li class="inmateContainer" ng-repeat="inmate in inmates.filterResults = (main.inmateList | filter : inmates.searchAll | filter : inmates.search | filter : inmates.searchCharges | filter : inmates.searchTotalBail)">
       <ul class="inmateInfo" ng-click="inmate.active = !inmate.active">
         <li>{{inmate.name}}</li>
         <li>{{inmate.charges.length}}</li>
         <li>{{inmate.totalBailAmount}}</li>
         <li>{{inmate.dateReleased}}</li>
-        <li> ? </li>
+        <li>{{inmate.bailability}}</li>
       </ul>
       <ul class="inmateCharges title" ng-if="inmate.active">
         <li>Description</li>

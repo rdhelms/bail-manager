@@ -1,6 +1,20 @@
 (function() {
   angular.module('baseAngular').service('CrimesService', function(localStorageService) {
 
+    var crimeList;
+
+    function setCrimeList(newCrimeList) {
+      crimeList = newCrimeList;
+    }
+
+    function getCrimeList() {
+      if (crimeList) {
+        return crimeList;
+      } else {
+        return false;
+      }
+    }
+
     function getCrimes() {
       var request = $.ajax({
         method: 'GET',
@@ -60,7 +74,9 @@
     return {
       getCrimes: getCrimes,
       addCrime: addCrimeToManager,
-      updateCrime: updateCrime
+      updateCrime: updateCrime,
+      setCrimeList: setCrimeList,
+      getCrimeList: getCrimeList
     };
   });
 })();
