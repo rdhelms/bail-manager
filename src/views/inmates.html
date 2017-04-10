@@ -44,6 +44,11 @@
 </section>
 <p class="loading" ng-if="main.loading">LOADING...</p>
 <p ng-cloak class="resultNum">Results Found: {{inmates.filterResults.length}} </p>
+<button class="getStatsBtn" ng-click="inmates.getStats()">Calculate Statistics</button>
+<div class="statResults">
+  <h1>Statistics</h1>
+  <p>Total Bail Amount: {{inmates.totalBailAmount}}</p>
+</div>
 <section class="inmateList">
   <ul class="inmateInfo title">
     <li>Name</li>

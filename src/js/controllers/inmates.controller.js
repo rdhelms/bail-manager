@@ -5,6 +5,7 @@ angular.module('baseAngular').controller('inmatesCtrl', function(InmateService, 
   self.searchBailType = 'lessThan';
   self.searchNumCharges;
   self.searchBailAmount;
+  self.totalBailAmount = 0;
 
   self.addInmate = function(inmate) {
     InmateService.addInmateToManager(inmate).done(function(response) {
@@ -36,6 +37,13 @@ angular.module('baseAngular').controller('inmatesCtrl', function(InmateService, 
       return true;
     }
     return false;
+  };
+
+  self.getStats = function() {
+    self.totalBailAmount = 0;
+    self.filterResults.forEach(function(inmate) {
+      self.totalBailAmount += inmate.totalBailAmount;
+    });
   };
 
 });

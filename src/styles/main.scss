@@ -56,6 +56,17 @@ header {
   margin: 10px;
 }
 
+.statResults {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid black;
+  h1 {
+    text-decoration: underline;
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+}
+
 .allInmates, .allCrimes {
   border: 2px solid black;
 }
