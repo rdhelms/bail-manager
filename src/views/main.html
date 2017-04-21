@@ -3,8 +3,10 @@
     <ul class="navBtns">
       <li ui-sref="main">Home</li>
       <li ui-sref="main.inmates">Inmates</li>
-      <li ui-sref="main.crimes">Crimes</li>
-      <!-- <li ui-sref="main.manager">Manager</li> -->
+      <li ui-sref="main.crimes">Parameters</li>
+      <button ng-if="!main.signedIn" class="signInBtn" ng-click="main.signIn()">Sign In</button>
+      <button ng-if="main.signedIn" class="signOutBtn" ng-click="main.signOut()">Sign Out</button>
+      <p ng-if="main.signedIn" class="signInWelcome">Welcome, {{main.user.name}}</p>
     </ul>
   </nav>
 </header>
