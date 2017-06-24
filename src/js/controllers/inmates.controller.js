@@ -1,4 +1,4 @@
-angular.module('baseAngular').controller('inmatesCtrl', function(InmateService, $state, $scope) {
+angular.module('inmateManager').controller('inmatesCtrl', function(InmateService, $state, $scope) {
   var self = this;
 
   self.searchChargesType = 'lessThan';

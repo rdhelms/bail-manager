@@ -1,4 +1,4 @@
-angular.module('baseAngular').controller('crimesCtrl', function(CrimesService, $state, $scope) {
+angular.module('inmateManager').controller('crimesCtrl', function(CrimesService, $state, $scope) {
   var self = this;
 
   self.updateCrime = function(crime) {

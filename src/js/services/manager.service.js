@@ -1,5 +1,5 @@
 (function() {
-  angular.module('baseAngular').service('ManagerService', function(localStorageService) {
+  angular.module('inmateManager').service('ManagerService', function(localStorageService) {
 
     function getInmates() {
       var request = $.ajax({

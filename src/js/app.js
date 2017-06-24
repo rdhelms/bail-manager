@@ -1,7 +1,7 @@
 (function() {
   "use strict";
 
-  angular.module('baseAngular', ['ui.router', 'LocalStorageModule'])
+  angular.module('inmateManager', ['ui.router', 'LocalStorageModule'])
         .config(function($stateProvider, $urlRouterProvider) {
           $urlRouterProvider.otherwise('/');
 

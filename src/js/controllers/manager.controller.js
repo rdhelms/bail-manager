@@ -1,3 +1,3 @@
-angular.module('baseAngular').controller('managerCtrl', function(InmateService, $state, $scope) {
+angular.module('inmateManager').controller('managerCtrl', function(InmateService, $state, $scope) {
   var self = this;
 });

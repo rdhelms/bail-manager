@@ -1,12 +1,13 @@
-angular.module('baseAngular').controller('mainCtrl', function(InmateService, CrimesService, $state, $scope) {
+angular.module('inmateManager').controller('mainCtrl', function(InmateService, CrimesService, UserService, $state, $scope) {
   var self = this;
 
   self.signedIn = false;
   self.loading = true;
   self.user = getUser();
+  self.validUser = false;
 
-  self.crimeList = CrimesService.getCrimeList() || getCrimes();
-  self.inmateList = InmateService.getInmateList() || getInmates();
+  self.crimeList = CrimesService.getCrimeList();
+  self.inmateList = InmateService.getInmateList();
 
   function getCrimes() {
     CrimesService.getCrimes().done(function(response) {
@@ -27,18 +28,39 @@ angular.module('baseAngular').controller('mainCtrl', function(InmateService, Cri
   }
 
   function getInmates() {
-      InmateService.getInmates().done(function(response) {
-        response.forEach(function(inmate) {
-          InmateService.checkBailability(inmate);
-        });
-        InmateService.setInmateList(response);
-        self.loadingInmates = false;
-        if (!self.loadingCrimes && !self.loadingInmates) {
-          self.loading = false;
-        }
-        self.inmateList = InmateService.getInmateList();
-        $scope.$apply();
+    InmateService.getInmates().done(function(response) {
+      response.forEach(function(inmate) {
+        InmateService.checkBailability(inmate);
       });
+      InmateService.setInmateList(response);
+      self.loadingInmates = false;
+      if (!self.loadingCrimes && !self.loadingInmates) {
+        self.loading = false;
+      }
+      self.inmateList = InmateService.getInmateList();
+      $scope.$apply();
+    });
+  }
+
+  function signInInmateUser(user) {
+    // If the user is new, API will POST a new user to the db and return the user info.
+    // If the user is existing, API will return the user info
+    // User will be marked as registeredUser.super (true or false)
+    UserService.signInUser(user).done(function(response) {
+      var bailFundUser = response.result.value;
+      console.log("Registered User:", bailFundUser);
+      if (bailFundUser.super) {
+        getCrimes();
+        getInmates();
+        self.validUser = true;
+      }
+      self.signedIn = true;
+      self.user = bailFundUser;
+      $scope.$apply();
+    }).fail(function(err) {
+      console.log("Error getting Registered User", err);
+      self.signOut();
+    });
   }
 
   self.updateCrime = function(crime) {
@@ -51,6 +73,7 @@ angular.module('baseAngular').controller('mainCtrl', function(InmateService, Cri
   };
 
   self.signOut = function() {
+    self.validUser = false;
     signOut();
   };
 
@@ -61,12 +84,8 @@ angular.module('baseAngular').controller('mainCtrl', function(InmateService, Cri
       name: null,
       uid: null,
       token: null,
-      username: null,
       picture: null,
-      id: null,
-      joined: null
   };
-  var loggedIn = false;
 
   //Get the current values for user data
   function getUser() {
@@ -95,7 +114,6 @@ angular.module('baseAngular').controller('mainCtrl', function(InmateService, Cri
         getLogin();
       } else {
         self.signedIn = false;
-        loggedIn = false;
         $scope.$apply();
       }
   }
@@ -119,86 +137,14 @@ angular.module('baseAngular').controller('mainCtrl', function(InmateService, Cri
           method: 'GET'
       });
       requestUser.then(function(response) {
+          console.log("Google User info:", response);
+          console.log("Google auth info:", auth2.currentUser);
           user.name = response.result.names[0].displayName;
           user.picture = response.result.photos[0].url;
           user.uid = auth2.currentUser.Ab.El;
           user.token = auth2.currentUser.Ab.Zi.access_token;
-          self.user = user;
-          loggedIn = true;
-          self.signedIn = true;
-          $scope.$apply();
-          /*$.ajax({
-              method: 'PATCH',
-              url: 'https://forge-api.herokuapp.com/users/login',
-              data: {
-                  uid: user.uid,
-                  token: user.token
-              },
-              success: function(response) {
-                  user.joined = response.created_at;
-                  user.username = response.username;
-                  user.id = response.id;
-                  setTimeout(function() {
-                    PopupService.openTemp('welcome');
-                  }, 500);
-                  loggedIn = true;
-              },
-              error: function(error) {
-                  if (error.status === 404) {
-                      // $('#register-form').css('display', 'flex');
-                      PopupService.open('user-register');
-                  } else if (error.status === 0) {
-                      // Do nothing
-                  } else {
-                      PopupService.openTemp('fail-user-load');
-                      signOut();
-                  }
-              }
-          });*/
-      });
-  }
-
-  function registerUser(username) {
-      user.username = username;
-      $.ajax({
-          method: 'POST',
-          url: 'https://forge-api.herokuapp.com/users/create',
-          data: {
-              username: user.username,
-              uid: user.uid,
-              token: user.token
-          },
-          success: function(response) {
-              user.id = response.id;
-              PopupService.close();
-          },
-          error: function(error) {
-            PopupService.close();
-            PopupService.openTemp('fail-user-load');
-              signOut();
-          }
-      });
-  }
-
-  function editUsername(newName) {
-    console.log(newName);
-      user.username = newName;
-      return $.ajax({
-        method: 'PATCH',
-        url: 'https://forge-api.herokuapp.com/users/update',
-        headers: {
-            user_id: user.id,
-            token: user.token
-        },
-        data: {
-          username: newName
-        },
-        success: function (response) {
-          return response;
-        },
-        error: function (error) {
-
-        }
+          // Send the user info to the API.
+          signInInmateUser(user);
       });
   }
 

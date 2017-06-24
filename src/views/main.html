@@ -2,11 +2,12 @@
   <nav>
     <ul class="navBtns">
       <li ui-sref="main">Home</li>
-      <li ui-sref="main.inmates">Inmates</li>
-      <li ui-sref="main.crimes">Parameters</li>
+      <li ng-if="main.validUser" ui-sref="main.inmates">Inmates</li>
+      <li ng-if="main.validUser" ui-sref="main.crimes">Parameters</li>
       <button ng-if="!main.signedIn" class="signInBtn" ng-click="main.signIn()">Sign In</button>
       <button ng-if="main.signedIn" class="signOutBtn" ng-click="main.signOut()">Sign Out</button>
       <p ng-if="main.signedIn" class="signInWelcome">Welcome, {{main.user.name}}</p>
+      <img ng-if="main.signedIn"height="50" width="50" ng-src="{{main.user.picture}}">
     </ul>
   </nav>
 </header>

@@ -1,5 +1,5 @@
 (function() {
-  angular.module('baseAngular').service('InmateService', function(localStorageService, CrimesService) {
+  angular.module('inmateManager').service('InmateService', function(localStorageService, CrimesService) {
 
     var inmateList;
 
@@ -11,7 +11,7 @@
       if (inmateList) {
         return inmateList;
       } else {
-        return false;
+        return [];
       }
     }
 

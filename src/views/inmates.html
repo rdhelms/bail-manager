@@ -50,14 +50,15 @@
   <p>Total Bail Amount: {{inmates.totalBailAmount}}</p>
 </div>
 <section class="inmateList">
-  <ul class="inmateInfo title">
+  <p ng-if="!main.validUser">Sorry! Your account is not authorized to view this information.</p>
+  <ul ng-if="main.validUser" class="inmateInfo title">
     <li>Name</li>
     <li>Charges</li>
     <li>Total Bail Amount</li>
     <li>Date Released</li>
     <li>Bailable</li>
   </ul>
-  <ul class="allInmates">
+  <ul ng-if="main.validUser" class="allInmates">
     <li class="inmateContainer" ng-repeat="inmate in inmates.filterResults = (main.inmateList | filter : inmates.searchAll | filter : inmates.search | filter : inmates.searchCharges | filter : inmates.searchTotalBail)">
       <ul class="inmateInfo" ng-click="inmate.active = !inmate.active">
         <li>{{inmate.name}}</li>
