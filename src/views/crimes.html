@@ -26,19 +26,26 @@
 <p class="loading" ng-if="crimes.loading">LOADING...</p>
 <section class="crimesList">
   <ul class="crimeInfo title">
-    <li>Name</li>
-    <li>Bailable</li>
+    <li class="columnTitle" ng-click="crimes.sort('name')">Name <i class="fa fa-sort" aria-hidden="true"></i></li>
+    <li class="columnTitle" ng-click="crimes.sort('bailable')">Bailable <i class="fa fa-sort" aria-hidden="true"></i></li>
+    <li class="columnTitle" ng-click="crimes.sort('label')">Label <i class="fa fa-sort" aria-hidden="true"></i></li>
   </ul>
   <ul class="allCrimes">
-    <li class="crimeContainer" ng-repeat="crime in crimes.filterResults = (main.crimeList | filter : crimes.searchAll | filter : crimes.search)">
-      <ul class="crimeInfo">
-        <li>{{crime.name}}</li>
-        <li>
+    <li class="crimeContainer" ng-repeat="crime in crimes.filterResults = (main.crimeList | filter : crimes.searchAll | filter : crimes.search | orderBy: crimes.sortType)">
+      <ul class="crimeInfo tableContent">
+        <li class="crimeName">{{crime.name}}</li>
+        <li class="crimeOptions">
           <button ng-class="crime.bailable == 'No' ? 'notBailable active' : ''" ng-click="crime.bailable='No'; crimes.updateCrime(crime)">No</button>
           <button ng-class="crime.bailable == 'Yes' ? 'bailable active' : ''" ng-click="crime.bailable='Yes'; crimes.updateCrime(crime)">Yes</button>
           <button ng-class="crime.bailable == 'Hold' ? 'holdBailable active' : ''" ng-click="crime.bailable='Hold'; crimes.updateCrime(crime)">Hold</button>
           <button ng-class="crime.bailable == 'Null' ? 'nullBailable active' : ''" ng-click="crime.bailable='Null'; crimes.updateCrime(crime)">Null</button>
         </li>
+        <li class="crimeLabel">
+          <select ng-model="crime.label" ng-options="label.name for label in main.labelList" ng-change="crimes.updateCrimeLabel(crime)">
+            <option value=""> Select Label </option>
+          </select>
+          <button ng-click="crimes.addNewLabel(crime)"> Add new Label </button>
+       </li>
       </ul>
     </li>
   </ul>

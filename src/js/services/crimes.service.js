@@ -31,21 +31,25 @@
     }
 
     function updateCrime(crime) {
-      var request = {
+      var updateData = {
         query: {
           name: crime.name
         },
         update: {
           name: crime.name,
-          bailable: crime.bailable
+          bailable: crime.bailable,
+          label: {
+            name: crime.label.name,
+            bailable: crime.label.bailable
+          }
         }
       };
       var request = $.ajax({
         method: 'PUT',
         url: 'https://inmatesearch.herokuapp.com/api/nc/durham/crimes',
-        data: request,
+        data: updateData,
         success: function(data) {
-          console.log("Success: updateCrime");
+          // console.log("Success: updateCrime");
         },
         error: function(err) {
           console.log("Error: updateCrime");
@@ -55,28 +59,11 @@
       return request;
     }
 
-    function addCrimeToManager(inmate) {
-      var request = $.ajax({
-        method: 'POST',
-        url: 'https://inmatesearch.herokuapp.com/api/inmatemanager/crimes',
-        data: inmate,
-        success: function(data) {
-          console.log("Success: addCrime");
-        },
-        error: function(err) {
-          console.log("Error: addCrime");
-          console.log(err);
-        }
-      });
-      return request;
-    }
-
     return {
-      getCrimes: getCrimes,
-      addCrime: addCrimeToManager,
-      updateCrime: updateCrime,
       setCrimeList: setCrimeList,
-      getCrimeList: getCrimeList
+      getCrimeList: getCrimeList,
+      getCrimes: getCrimes,
+      updateCrime: updateCrime
     };
   });
 })();

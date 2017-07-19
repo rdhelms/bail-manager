@@ -6,6 +6,7 @@ angular.module('inmateManager').controller('inmatesCtrl', function(InmateService
   self.searchNumCharges;
   self.searchBailAmount;
   self.totalBailAmount = 0;
+  self.sortType = 'name';
 
   self.addInmate = function(inmate) {
     InmateService.addInmateToManager(inmate).done(function(response) {
@@ -44,6 +45,16 @@ angular.module('inmateManager').controller('inmatesCtrl', function(InmateService
     self.filterResults.forEach(function(inmate) {
       self.totalBailAmount += inmate.totalBailAmount;
     });
+  };
+
+  self.sort = function(type) {
+    if (self.sortType == type) {
+      self.sortType = '-' + type;
+    } else if (self.sortType == '-' + type) {
+      self.sortType = type;
+    } else {
+      self.sortType = type;
+    }
   };
 
 });

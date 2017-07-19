@@ -52,23 +52,23 @@
 <section class="inmateList">
   <p ng-if="!main.validUser">Sorry! Your account is not authorized to view this information.</p>
   <ul ng-if="main.validUser" class="inmateInfo title">
-    <li>Name</li>
-    <li>Charges</li>
-    <li>Total Bail Amount</li>
-    <li>Date Released</li>
-    <li>Bailable</li>
+    <li class="columnTitle" ng-click="inmates.sort('name')">Name <i class="fa fa-sort" aria-hidden="true"></i></li>
+    <li class="columnTitle" ng-click="inmates.sort('charges.length')">Charges <i class="fa fa-sort" aria-hidden="true"></i></li>
+    <li class="columnTitle" ng-click="inmates.sort('totalBailAmount')">Total Bail Amount <i class="fa fa-sort" aria-hidden="true"></i></li>
+    <li class="columnTitle" ng-click="inmates.sort('dateReleased')">Date Released <i class="fa fa-sort" aria-hidden="true"></i></li>
+    <li class="columnTitle" ng-click="inmates.sort('bailability')">Bailable <i class="fa fa-sort" aria-hidden="true"></i></li>
   </ul>
   <ul ng-if="main.validUser" class="allInmates">
-    <li class="inmateContainer" ng-repeat="inmate in inmates.filterResults = (main.inmateList | filter : inmates.searchAll | filter : inmates.search | filter : inmates.searchCharges | filter : inmates.searchTotalBail)">
-      <ul class="inmateInfo" ng-click="inmate.active = !inmate.active">
-        <li>{{inmate.name}}</li>
+    <li ng-repeat="inmate in inmates.filterResults = (main.inmateList | filter : inmates.searchAll | filter : inmates.search | filter : inmates.searchCharges | filter : inmates.searchTotalBail | orderBy: inmates.sortType)">
+      <ul class="inmateInfo tableContent" ng-click="inmate.active = !inmate.active">
+        <li class="inmateName">{{inmate.name}}</li>
         <li>{{inmate.charges.length}}</li>
         <li>{{inmate.totalBailAmount}}</li>
         <li>{{inmate.dateReleased}}</li>
         <li>{{inmate.bailability}}</li>
       </ul>
       <ul class="inmateCharges title" ng-if="inmate.active">
-        <li>Description</li>
+        <li class="chargeDescription">Description</li>
         <li>Bail</li>
         <li>Bond Type</li>
         <li>CourtDocket</li>
@@ -77,8 +77,8 @@
         <li>Date Released</li>
         <li>Days in Jail</li>
       </ul>
-      <ul class="inmateCharges" ng-repeat="charge in inmate.charges" ng-if="inmate.active">
-        <li>{{charge.description}}</li>
+      <ul class="inmateCharges tableContent" ng-repeat="charge in inmate.charges" ng-if="inmate.active">
+        <li class="chargeDescription">{{charge.description}}</li>
         <li>{{charge.bailAmountString}}</li>
         <li>{{charge.bondType}}</li>
         <li>{{charge.courtDocket}}</li>

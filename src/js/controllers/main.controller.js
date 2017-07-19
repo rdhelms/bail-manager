@@ -1,29 +1,47 @@
-angular.module('inmateManager').controller('mainCtrl', function(InmateService, CrimesService, UserService, $state, $scope) {
+angular.module('inmateManager').controller('mainCtrl', function(InmateService, CrimesService, UserService, LabelService, $state, $scope) {
   var self = this;
 
   self.signedIn = false;
   self.loading = true;
+  self.loadingLabels = true;
+  self.loadingCrimes = true;
+  self.loadingInmates = true;
   self.user = getUser();
   self.validUser = false;
 
   self.crimeList = CrimesService.getCrimeList();
   self.inmateList = InmateService.getInmateList();
+  self.labelList = LabelService.getLabelList();
 
   function getCrimes() {
-    CrimesService.getCrimes().done(function(response) {
-      response.forEach(function(crime) {
-        if (!crime.bailable || crime.bailable == "Maybe") {
-          crime.bailable = "Null";
-          self.updateCrime(crime);
+    CrimesService.getCrimes().done(function(crimeResponse) {
+      LabelService.getLabels().done(function(labelResponse) {
+        LabelService.setLabelList(labelResponse);
+        self.loadingLabels = false;
+        self.labelList = LabelService.getLabelList();
+
+        crimeResponse.forEach(function(crime) {
+          if (!crime.bailable) {
+            crime.bailable = "Null";
+            self.updateCrime(crime);
+          }
+          if (crime.label) {
+            var labelIndex = -1;
+            self.labelList.forEach(function(label) {
+              if (label.name === crime.label.name) {
+                crime.label = label;
+              }
+            });
+          }
+        });
+        CrimesService.setCrimeList(crimeResponse);
+        self.loadingCrimes = false;
+        if (!self.loadingCrimes && !self.loadingInmates && !self.loadingLabels) {
+          self.loading = false;
         }
+        self.crimeList = CrimesService.getCrimeList();
+        $scope.$apply();
       });
-      CrimesService.setCrimeList(response);
-      self.loadingCrimes = false;
-      if (!self.loadingCrimes && !self.loadingInmates) {
-        self.loading = false;
-      }
-      self.crimeList = CrimesService.getCrimeList();
-      $scope.$apply();
     });
   }
 
@@ -34,7 +52,7 @@ angular.module('inmateManager').controller('mainCtrl', function(InmateService, C
       });
       InmateService.setInmateList(response);
       self.loadingInmates = false;
-      if (!self.loadingCrimes && !self.loadingInmates) {
+      if (!self.loadingCrimes && !self.loadingInmates && !self.loadingLabels) {
         self.loading = false;
       }
       self.inmateList = InmateService.getInmateList();

@@ -16,6 +16,7 @@
 
 button {
   outline-style: none;
+  cursor: pointer;
 }
 
 header {
@@ -67,25 +68,17 @@ header {
   }
 }
 
-.allInmates, .allCrimes {
-  border: 2px solid black;
-}
-
-.inmateContainer, .crimeContainer {
-  border-bottom: 2px solid black;
-}
-
 .inmateInfo {
   display: flex;
   background: #059;
   color: white;
-  padding: 5px;
-  &.title {
-    background: #005;
+  &:hover {
+    background: #037;
+    cursor: pointer;
   }
   li {
     width: 20%;
-    padding: 5px;
+    padding: 10px;
   }
 }
 
@@ -93,13 +86,44 @@ header {
   display: flex;
   background: #059;
   color: white;
-  padding: 5px;
-  &.title {
-    background: #005;
+  &:hover {
+    background: #037;
+    cursor: pointer;
   }
   li {
-    width: 50%;
+    width: 33.3%;
     padding: 5px;
+  }
+}
+
+.columnTitle {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #005;
+  border: 1px solid #777;
+  &:hover {
+    background: #019;
+    cursor: pointer;
+  }
+}
+
+.tableContent {
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #222;
+    &.inmateName, &.crimeName, &.crimeOptions {
+      display: flex;
+      justify-content: flex-start;
+    }
+    &.crimeOptions {
+      button {
+        margin: 0 1px;
+        width: 20%;
+      }
+    }
   }
 }
 
@@ -126,9 +150,24 @@ button.nullBailable.active {
   border: 1px solid #555;
   &.title {
     background: #222;
+    li {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border: 1px solid #555;
+      border-width: 0 1px 0 1px;
+    }
   }
   li {
-    width: 12.5%;
+    width: 10%;
     padding: 5px;
+    overflow: scroll;
+    &.chargeDescription {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 30%;
+      line-height: 1.5;
+    }
   }
 }
