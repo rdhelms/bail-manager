@@ -37,13 +37,16 @@
         },
         update: {
           name: crime.name,
-          bailable: crime.bailable,
-          label: {
-            name: crime.label.name,
-            bailable: crime.label.bailable
-          }
+          bailable: crime.bailable
         }
       };
+      if (crime.label) {
+        var label = {
+          name: crime.label.name,
+          bailable: crime.label.bailable
+        };
+        updateData.update.label = label;
+      }
       var request = $.ajax({
         method: 'PUT',
         url: 'https://inmatesearch.herokuapp.com/api/nc/durham/crimes',
