@@ -20,10 +20,10 @@
         method: 'GET',
         url: 'https://inmatesearch.herokuapp.com/api/nc/durham/inmates',
         success: function(data) {
-          console.log("Success: getInmates");
+          // console.log("Success: getInmates");
         },
         error: function(err) {
-          console.log("Error: getInmates");
+          // console.log("Error: getInmates");
           console.log(err);
         }
       });
@@ -36,10 +36,10 @@
         url: 'https://inmatesearch.herokuapp.com/api/inmatemanager/inmates',
         data: inmate,
         success: function(data) {
-          console.log("Success: addInmate");
+          // console.log("Success: addInmate");
         },
         error: function(err) {
-          console.log("Error: addInmate");
+          // console.log("Error: addInmate");
           console.log(err);
         }
       });
@@ -68,12 +68,28 @@
       }
     }
 
+    function getInmatesCSV() {
+      var request = $.ajax({
+        method: 'GET',
+        url: 'https://inmatesearch.herokuapp.com/api/nc/durham/inmates/download',
+        success: function(data) {
+          // console.log("Success: getInmatesCSV");
+        },
+        error: function(err) {
+          // console.log("Error: getInmatesCSV");
+          console.log(err);
+        }
+      });
+      return request;
+    }
+
     return {
+      setInmateList: setInmateList,
+      getInmateList: getInmateList,
       getInmates: getInmates,
       addInmate: addInmateToManager,
       checkBailability: checkBailability,
-      setInmateList: setInmateList,
-      getInmateList: getInmateList
+      getInmatesCSV: getInmatesCSV
     };
   });
 })();

@@ -49,6 +49,7 @@
   <h1>Statistics</h1>
   <p>Total Bail Amount: {{inmates.totalBailAmount}}</p>
 </div>
+<button class="getInmatesCSVBtn" ng-click="inmates.getInmatesCSV()">Export CSV</button>
 <section class="inmateList">
   <p ng-if="!main.validUser">Sorry! Your account is not authorized to view this information.</p>
   <ul ng-if="main.validUser" class="inmateInfo title">

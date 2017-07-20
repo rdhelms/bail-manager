@@ -57,4 +57,8 @@ angular.module('inmateManager').controller('inmatesCtrl', function(InmateService
     }
   };
 
+  self.getInmatesCSV = function() {
+    window.open("https://inmatesearch.herokuapp.com/api/nc/durham/inmates/download");
+  };
+
 });
