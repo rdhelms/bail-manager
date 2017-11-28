@@ -2,7 +2,7 @@
   <nav>
     <ul class="navBtns">
       <li ui-sref="main">Home</li>
-      <li ng-if="main.validUser" ui-sref="main.inmates">Inmates</li>
+      <li ng-if="main.validUser" ui-sref="main.inmates">People</li>
       <li ng-if="main.validUser" ui-sref="main.crimes">Parameters</li>
       <button ng-if="!main.signedIn" class="signInBtn" ng-click="main.signIn()">Sign In</button>
       <button ng-if="main.signedIn" class="signOutBtn" ng-click="main.signOut()">Sign Out</button>
