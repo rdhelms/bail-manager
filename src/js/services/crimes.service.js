@@ -20,11 +20,8 @@
         method: 'GET',
         url: 'https://inmatesearch.herokuapp.com/api/nc/durham/crimes',
         success: function(data) {
-          console.log("Success: getCrimes");
         },
         error: function(err) {
-          console.log("Error: getCrimes");
-          console.log(err);
         }
       });
       return request;
@@ -52,11 +49,8 @@
         url: 'https://inmatesearch.herokuapp.com/api/nc/durham/crimes',
         data: updateData,
         success: function(data) {
-          // console.log("Success: updateCrime");
         },
         error: function(err) {
-          console.log("Error: updateCrime");
-          console.log(err);
         }
       });
       return request;

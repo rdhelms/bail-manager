@@ -1,5 +1,5 @@
 <section class="search">
-  <h1>Search Crimes</h1>
+  <h1>Search Charges</h1>
   <div class="searchField">
     <label for="searchAll">Search All Fields: </label>
     <input id="searchAll" type="text" ng-model="crimes.searchAll">
@@ -22,7 +22,7 @@
     <span>All</span>
   </div>
 </section>
-<p ng-cloak class="resultNum">Crimes Found: {{crimes.filterResults.length}} </p>
+<p ng-cloak class="resultNum">Charges Found: {{crimes.filterResults.length}} </p>
 <p class="loading" ng-if="crimes.loading">LOADING...</p>
 <section class="crimesList">
   <ul class="crimeInfo title">

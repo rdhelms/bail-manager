@@ -1,15 +1,20 @@
 <header>
-  <nav>
-    <ul class="navBtns">
-      <li ui-sref="main">Home</li>
-      <li ng-if="main.validUser" ui-sref="main.inmates">People</li>
-      <li ng-if="main.validUser" ui-sref="main.crimes">Parameters</li>
-      <button ng-if="!main.signedIn" class="signInBtn" ng-click="main.signIn()">Sign In</button>
-      <button ng-if="main.signedIn" class="signOutBtn" ng-click="main.signOut()">Sign Out</button>
-      <p ng-if="main.signedIn" class="signInWelcome">Welcome, {{main.user.name}}</p>
-      <img ng-if="main.signedIn"height="50" width="50" ng-src="{{main.user.picture}}">
-    </ul>
-  </nav>
+    <nav>
+        <ul class="navBtns">
+            <div class="leftNav">
+                <li ui-sref="main">Home</li>
+                <li ng-if="main.validUser" ui-sref="main.inmates">People</li>
+                <li ng-if="main.validUser" ui-sref="main.crimes">Parameters</li>
+            </div>
+            <div class="rightNav">
+                <div class="signInWelcome"><img class="profilePic" ng-if="main.signedIn" height="40" width="40" ng-src="{{main.user.picture}}"></div>
+                <button ng-if="!main.signedIn" class="signInBtn" ng-click="main.signIn()">Sign In</button>
+                <button ng-if="main.signedIn" class="signOutBtn" ng-click="main.signOut()">Sign Out</button>
+            </div>
+        </ul>
+    </nav>
 </header>
 
-<ui-view></ui-view>
+<ui-view>
+    <img width="100%" src="images/durham.png">
+</ui-view>

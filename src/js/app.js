@@ -10,11 +10,11 @@
             templateUrl: 'src/views/main.html',
             controller: 'mainCtrl as main'
           }).state('main.inmates', {
-            url: 'inmates',
+            url: 'people',
             templateUrl: 'src/views/inmates.html',
             controller: 'inmatesCtrl as inmates'
           }).state('main.crimes', {
-            url: 'crimes',
+            url: 'parameters',
             templateUrl: 'src/views/crimes.html',
             controller: 'crimesCtrl as crimes'
           }).state('main.manager', {

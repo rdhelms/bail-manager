@@ -66,7 +66,6 @@ angular.module('inmateManager').controller('mainCtrl', function(InmateService, C
     // User will be marked as registeredUser.super (true or false)
     UserService.signInUser(user).done(function(response) {
       var bailFundUser = response.result.value;
-      console.log("Registered User:", bailFundUser);
       if (bailFundUser.super) {
         getCrimes();
         getInmates();
@@ -76,7 +75,6 @@ angular.module('inmateManager').controller('mainCtrl', function(InmateService, C
       self.user = bailFundUser;
       $scope.$apply();
     }).fail(function(err) {
-      console.log("Error getting Registered User", err);
       self.signOut();
     });
   }
@@ -155,8 +153,6 @@ angular.module('inmateManager').controller('mainCtrl', function(InmateService, C
           method: 'GET'
       });
       requestUser.then(function(response) {
-          console.log("Google User info:", response);
-          console.log("Google auth info:", auth2.currentUser);
           user.name = response.result.names[0].displayName;
           user.picture = response.result.photos[0].url;
           user.uid = auth2.currentUser.Ab.El;

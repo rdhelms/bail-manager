@@ -15,7 +15,6 @@ angular.module('inmateManager').controller('crimesCtrl', function(CrimesService,
   self.updateCrime = function(crime) {
     crime.label = undefined;
     CrimesService.updateCrime(crime).done(function(response) {
-      // console.log("Received Response: ", response);
     });
   };
 
@@ -26,14 +25,12 @@ angular.module('inmateManager').controller('crimesCtrl', function(CrimesService,
       bailable: crime.bailable
     };
     LabelService.createLabel(newLabel).done(function(response) {
-      // console.log("createLabel Response: ", response);
     });
     $scope.main.labelList = LabelService.getLabelList();
     $scope.main.labelList.push(newLabel);
     LabelService.setLabelList($scope.main.labelList);
     crime.label = newLabel;
     CrimesService.updateCrime(crime).done(function(response) {
-      // console.log("updateCrime Response: ", response);
     });
   };
 
@@ -43,7 +40,6 @@ angular.module('inmateManager').controller('crimesCtrl', function(CrimesService,
     } else {
       crime.bailable = crime.label.bailable;
       CrimesService.updateCrime(crime).done(function(response) {
-        // console.log("updateCrime Response: ", response);
       });
     }
   };

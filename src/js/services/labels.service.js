@@ -19,11 +19,8 @@
         method: 'GET',
         url: 'https://inmatesearch.herokuapp.com/api/nc/durham/labels',
         success: function(data) {
-          console.log("Success: getLabels");
         },
         error: function(err) {
-          console.log("Error: getLabels");
-          console.log(err);
         }
       });
       return request;
@@ -44,11 +41,8 @@
         url: 'https://inmatesearch.herokuapp.com/api/nc/durham/labels',
         data: updateData,
         success: function(data) {
-          // console.log("Success: updateLabel");
         },
         error: function(err) {
-          console.log("Error: updateLabel");
-          console.log(err);
         }
       });
       return request;
@@ -60,11 +54,8 @@
         url: 'https://inmatesearch.herokuapp.com/api/nc/durham/labels',
         data: newLabel,
         success: function(data) {
-          // console.log("Success: createLabel");
         },
         error: function(err) {
-          console.log("Error: createLabel");
-          console.log(err);
         }
       });
       return request;

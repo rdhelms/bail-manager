@@ -15,7 +15,6 @@ angular.module('inmateManager').controller('inmatesCtrl', function (InmateServic
 
     self.addInmate = function (inmate) {
         InmateService.addInmateToManager(inmate).done(function (response) {
-            console.log(response);
         });
     };
 
